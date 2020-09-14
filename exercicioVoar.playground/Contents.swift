@@ -12,14 +12,23 @@ class Pato: Voador {
     }
     
     func Voar() {
-        var totalEnergia = 0
-        totalEnergia = energia - 5
+        var totalEnergia = self.getEnergia()
         
         if totalEnergia <= 0 {
             print("Pato sem enenrgia!")
         }else {
+            totalEnergia = totalEnergia - 5
+            self.setEnergia(energia: totalEnergia)
             print("Pato voando!")
         }
+    }
+    
+    func getEnergia() -> Int {
+        return self.energia
+    }
+    
+    func setEnergia(energia: Int) {
+        self.energia = energia
     }
 }
 
@@ -49,15 +58,15 @@ class TorreDeControle {
     }
 }
 
-let pato = Pato(energia: 0)
+let pato = Pato(energia: 10)
 let aviao = Aviao()
 let superHomem = SuperHomem()
 
 let torreDeControle = TorreDeControle()
 
 torreDeControle.adicionarVoador(umVoador: pato)
-torreDeControle.adicionarVoador(umVoador: aviao)
-torreDeControle.adicionarVoador(umVoador: superHomem)
+//torreDeControle.adicionarVoador(umVoador: aviao)
+//torreDeControle.adicionarVoador(umVoador: superHomem)
 
 torreDeControle.voamTodos()
 torreDeControle.voamTodos()
